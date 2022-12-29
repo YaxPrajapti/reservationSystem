@@ -9,6 +9,7 @@ import authRoute from './routes/auth.js';
 import usersRoute from './routes/users.js'; 
 import hotelsRoute from './routes/hotels.js'; 
 import roomsRoute from './routes/rooms.js'; 
+import cookieParser from 'cookie-parser';
 
 dotenv.config({ path: 'config.env' });
 const port = process.env.PORT || 3000;
@@ -35,6 +36,7 @@ mongoose.connection.on("connected", ()=>{
 })
 
 //middlewares
+app.use(cookieParser());
 app.use(express.json()); //this is used to send json objects. 
 
 app.use('/api/auth', authRoute);
